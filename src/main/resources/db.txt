@@ -29,7 +29,7 @@
 "email" : "name4@gmail.com",
 "active" : true,
 "city" : "Arico",
-"creationDate" : "2019-01-012T13:10:00.000+01:00"
+"creationDate" : "2019-01-01T13:10:00.000+01:00"
 },
 {
 "name" : "name5",

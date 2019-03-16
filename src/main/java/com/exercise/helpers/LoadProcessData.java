@@ -5,8 +5,15 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
 import java.lang.reflect.Type;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.Scanner;
 
 import org.json.simple.JSONArray;
@@ -40,6 +47,7 @@ public class LoadProcessData {
 			System.out.println(jsonUser);
 
 			User user = new Gson().fromJson(jsonUser.toString(), User.class);
+			
 			users.add(user);
 		}
 		System.out.println("users" + users.get(0).getCity());
@@ -91,9 +99,49 @@ public class LoadProcessData {
 
 				}
 				if (cont == 0)
-					System.out.println("No Found City");
+					System.out.println("No Found Users Active");
 			} else
 				System.out.println("No Cities in the DataBase");
+		}else
+			System.out.println("Can´t do the search ");
+		pressAnyKeyToContinue();
+		
+	}
+	public void searchDate() throws FileNotFoundException, IOException, ParseException {
+		List<User> users = loadData();
+		@SuppressWarnings("resource")
+		Scanner reader = new Scanner(System.in);
+		System.out.print("Order Ascent press 1: ");
+		System.out.print("Order Descent press 2: ");
+		String select = reader.next();
+		int selectCase=Integer.parseInt(select);
+		if (select != "") {
+			if (users != null) {
+				switch (selectCase) {
+				case 1:
+					Collections.sort(users);
+				case 2:	
+					Collections.sort(users);
+					Collections.reverse(users);
+				} 
+			
+				
+				for (int i = 0; i < users.size(); i++) {
+					
+						
+						System.out.println("*************************** USER **********************************");
+						System.out.println("users" + users.get(i).getName());
+						System.out.println("users" + users.get(i).getSurname());
+						System.out.println("users" + users.get(i).getCity());
+						System.out.println("users" + users.get(i).getEmail());
+						System.out.println("users" + users.get(i).getCreationDate());
+						System.out.println("************************************************************************");
+					
+				}
+				
+		
+			} else
+				System.out.println("Not Users in the DataBase");
 		}else
 			System.out.println("Can´t do the search ");
 		pressAnyKeyToContinue();

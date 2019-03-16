@@ -11,14 +11,14 @@ import java.util.Date;
  *
  */
 
-public class User {
+public class User implements Comparable<User> {
 	
 	private String name;
 	private String surname;
 	private boolean active;
 	private String email;
 	private String city;
-	private String creationDate;
+	private Date creationDate;
 	
 //	public User() {}
 //	public User(String name, String surname,boolean active, String email, String city, String creationDate) {
@@ -63,13 +63,19 @@ public class User {
 	public void setCity(String city) {
 		this.city = city;
 	}
-	public String getCreationDate() {
+	public Date getCreationDate() {
 		return creationDate;
 	}
-	public void setCreationDate(String creationDate) {
+	public void setCreationDate(Date creationDate) {
 		this.creationDate = creationDate;
 	}
-	
+	@Override
+	  public int compareTo(User u) {
+	    if (getCreationDate() == null || u.getCreationDate() == null) {
+	      return 0;
+	    }
+	    return getCreationDate().compareTo(u.getCreationDate());
+	  }
 	
 	
 

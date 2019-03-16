@@ -32,7 +32,10 @@ public class CodebayApplication {
 				dataOption.searchCity();
 
 			}
+			if (select.equals("3")) {
+				dataOption.searchDate();
 
+			}
 			if (select.equals("5")) {
 				init = false;
 
