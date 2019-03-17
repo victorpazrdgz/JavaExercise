@@ -52,3 +52,27 @@
 2019-03-17 17:19:22.998 DEBUG DESKTOP-004Q2KR --- [           main] c.e.c.CodebayApplication                 : Running with Spring Boot v2.1.1.RELEASE, Spring v5.1.3.RELEASE
 2019-03-17 17:19:22.999  INFO DESKTOP-004Q2KR --- [           main] c.e.c.CodebayApplication                 : No active profile set, falling back to default profiles: default
 2019-03-17 17:19:23.495  INFO DESKTOP-004Q2KR --- [           main] c.e.c.CodebayApplication                 : Started CodebayApplication in 0.732 seconds (JVM running for 1.68)
+2019-03-17 19:30:10.965  INFO DESKTOP-004Q2KR --- [           main] c.e.c.CodebayApplication                 : Starting CodebayApplication on DESKTOP-004Q2KR with PID 4920 (started by VIPR in C:\Users\VIPR\Desktop\ofertas trabajo\codebay)
+2019-03-17 19:30:10.972 DEBUG DESKTOP-004Q2KR --- [           main] c.e.c.CodebayApplication                 : Running with Spring Boot v2.1.1.RELEASE, Spring v5.1.3.RELEASE
+2019-03-17 19:30:10.972  INFO DESKTOP-004Q2KR --- [           main] c.e.c.CodebayApplication                 : No active profile set, falling back to default profiles: default
+2019-03-17 19:30:12.010  INFO DESKTOP-004Q2KR --- [           main] c.e.c.CodebayApplication                 : Started CodebayApplication in 1.353 seconds (JVM running for 2.738)
+2019-03-17 22:45:30.851  INFO DESKTOP-004Q2KR --- [           main] c.e.c.CodebayApplication                 : Starting CodebayApplication on DESKTOP-004Q2KR with PID 10112 (started by VIPR in C:\Users\VIPR\Desktop\ofertas trabajo\codebay)
+2019-03-17 22:45:30.854 DEBUG DESKTOP-004Q2KR --- [           main] c.e.c.CodebayApplication                 : Running with Spring Boot v2.1.1.RELEASE, Spring v5.1.3.RELEASE
+2019-03-17 22:45:30.857  INFO DESKTOP-004Q2KR --- [           main] c.e.c.CodebayApplication                 : No active profile set, falling back to default profiles: default
+2019-03-17 22:45:32.030  INFO DESKTOP-004Q2KR --- [           main] c.e.c.CodebayApplication                 : Started CodebayApplication in 1.891 seconds (JVM running for 4.039)
+2019-03-17 22:49:03.910  INFO DESKTOP-004Q2KR --- [           main] c.e.c.CodebayApplication                 : Starting CodebayApplication on DESKTOP-004Q2KR with PID 12388 (started by VIPR in C:\Users\VIPR\Desktop\ofertas trabajo\codebay)
+2019-03-17 22:49:03.912 DEBUG DESKTOP-004Q2KR --- [           main] c.e.c.CodebayApplication                 : Running with Spring Boot v2.1.1.RELEASE, Spring v5.1.3.RELEASE
+2019-03-17 22:49:03.913  INFO DESKTOP-004Q2KR --- [           main] c.e.c.CodebayApplication                 : No active profile set, falling back to default profiles: default
+2019-03-17 22:49:04.404  INFO DESKTOP-004Q2KR --- [           main] c.e.c.CodebayApplication                 : Started CodebayApplication in 0.71 seconds (JVM running for 1.751)
+2019-03-17 22:52:34.354  INFO DESKTOP-004Q2KR --- [           main] c.e.c.CodebayApplication                 : Starting CodebayApplication on DESKTOP-004Q2KR with PID 12032 (started by VIPR in C:\Users\VIPR\Desktop\ofertas trabajo\codebay)
+2019-03-17 22:52:34.355 DEBUG DESKTOP-004Q2KR --- [           main] c.e.c.CodebayApplication                 : Running with Spring Boot v2.1.1.RELEASE, Spring v5.1.3.RELEASE
+2019-03-17 22:52:34.356  INFO DESKTOP-004Q2KR --- [           main] c.e.c.CodebayApplication                 : No active profile set, falling back to default profiles: default
+2019-03-17 22:52:34.851  INFO DESKTOP-004Q2KR --- [           main] c.e.c.CodebayApplication                 : Started CodebayApplication in 0.743 seconds (JVM running for 1.687)
+2019-03-17 22:58:56.433  INFO DESKTOP-004Q2KR --- [           main] c.e.c.CodebayApplication                 : Starting CodebayApplication on DESKTOP-004Q2KR with PID 8800 (started by VIPR in C:\Users\VIPR\Desktop\ofertas trabajo\codebay)
+2019-03-17 22:58:56.435 DEBUG DESKTOP-004Q2KR --- [           main] c.e.c.CodebayApplication                 : Running with Spring Boot v2.1.1.RELEASE, Spring v5.1.3.RELEASE
+2019-03-17 22:58:56.435  INFO DESKTOP-004Q2KR --- [           main] c.e.c.CodebayApplication                 : No active profile set, falling back to default profiles: default
+2019-03-17 22:58:56.929  INFO DESKTOP-004Q2KR --- [           main] c.e.c.CodebayApplication                 : Started CodebayApplication in 0.747 seconds (JVM running for 1.726)
+2019-03-17 23:02:19.236  INFO DESKTOP-004Q2KR --- [           main] c.e.c.CodebayApplication                 : Starting CodebayApplication on DESKTOP-004Q2KR with PID 11532 (started by VIPR in C:\Users\VIPR\Desktop\ofertas trabajo\codebay)
+2019-03-17 23:02:19.238 DEBUG DESKTOP-004Q2KR --- [           main] c.e.c.CodebayApplication                 : Running with Spring Boot v2.1.1.RELEASE, Spring v5.1.3.RELEASE
+2019-03-17 23:02:19.238  INFO DESKTOP-004Q2KR --- [           main] c.e.c.CodebayApplication                 : No active profile set, falling back to default profiles: default
+2019-03-17 23:02:19.740  INFO DESKTOP-004Q2KR --- [           main] c.e.c.CodebayApplication                 : Started CodebayApplication in 0.739 seconds (JVM running for 1.701)

@@ -79,7 +79,7 @@ public class LoadProcessData {
 		try {
 			List<User> users = loadData();
 			List<User> usersActive = new ArrayList<User>();
-			if (users != null) {
+			if (!users.isEmpty()) {
 				for (int i = 0; i < users.size(); i++) {
 					if (users.get(i).isActive() == true) {
 						usersActive.add(users.get(i));
@@ -116,23 +116,21 @@ public class LoadProcessData {
 			Scanner reader = new Scanner(System.in);
 			System.out.print("Search City By: ");
 			String select = reader.nextLine();
-			if (select != "") {
-				if (users != null) {
-					for (int i = 0; i < users.size(); i++) {
-						if (users.get(i).getCity().startsWith(select)
-								&& (!searchedCities.contains(users.get(i).getCity()))) {
+			if (!users.isEmpty()) {
+				for (int i = 0; i < users.size(); i++) {
+					if (users.get(i).getCity().startsWith(select)
+							&& (!searchedCities.contains(users.get(i).getCity()))) {
 
-							searchedCities.add(users.get(i).getCity());
-						}
+						searchedCities.add(users.get(i).getCity());
 					}
-					if (searchedCities.isEmpty())
-						System.out.println(ANSI_RED + "No Found Cities" + ANSI_RESET);
-					else
-						printCities(searchedCities);
-				} else
-					System.out.println(ANSI_RED + "No Cities in the DataBase" + ANSI_RESET);
+				}
+				if (searchedCities.isEmpty())
+					System.out.println(ANSI_RED + "No Found Cities" + ANSI_RESET);
+				else
+					printCities(searchedCities);
 			} else
-				System.out.println(ANSI_RED + "Can´t do the search " + ANSI_RESET);
+				System.out.println(ANSI_RED + "No Cities in the DataBase" + ANSI_RESET);
+
 			pressAnyKeyToContinue();
 		} catch (Exception e) {
 			System.out.print(ANSI_RED + "**** Error Searching City ***** \n\n" + ANSI_RESET);
@@ -162,7 +160,7 @@ public class LoadProcessData {
 			System.out.print("     Your Option :       \n");
 			String select = reader.next();
 			int selectOption = Integer.parseInt(select);
-			if (users != null) {
+			if (!users.isEmpty()) {
 				switch (selectOption) {
 				case 1:
 					Collections.sort(users);
@@ -182,7 +180,7 @@ public class LoadProcessData {
 
 			pressAnyKeyToContinue();
 		} catch (Exception e) {
-			System.out.print(ANSI_RED + "**** Error Introducing data ***** \n\n" + ANSI_RESET);
+			System.out.print(ANSI_RED + "**** Error Order By Date ***** \n\n" +  ANSI_RESET);
 			pressAnyKeyToContinue();
 		}
 	}
