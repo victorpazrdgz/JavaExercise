@@ -33,7 +33,7 @@ public class LoadProcessData {
 	public List<User> loadData() throws FileNotFoundException, IOException, ParseException {
 		List<User> users = new ArrayList<User>();
 		JSONParser parser = new JSONParser();
-		Object obj = parser.parse(new FileReader("src/main/resources/dbw.txt"));
+		Object obj = parser.parse(new FileReader("src/main/resources/db.txt"));
 		JSONArray jsonArray = (JSONArray) obj;
 		
 		for (int i = 0; i < jsonArray.size(); i++) {
@@ -217,7 +217,7 @@ public class LoadProcessData {
 				usersJson.add(userJson);
 			}
 
-			FileWriter file = new FileWriter("src/main/resources/dbw.txt", false);
+			FileWriter file = new FileWriter("src/main/resources/db.txt", false);
 
 			JSONArray.writeJSONString(usersJson, file);
 			file.close();
