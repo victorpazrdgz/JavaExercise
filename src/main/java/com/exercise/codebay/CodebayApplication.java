@@ -11,7 +11,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 
 import com.exercise.helpers.*;
+
 /**
+ * In this class is the main method that contains the start menu for the user
  * 
  * @author VIPR
  *
@@ -20,6 +22,15 @@ import com.exercise.helpers.*;
 public class CodebayApplication {
 	private static final Logger logger = LogManager.getLogger(CodebayApplication.class);
 
+	/**
+	 * This method contain the principal menu.
+	 * 
+	 * @param args
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 * @throws ParseException
+	 */
+	
 	public static void main(String[] args) throws FileNotFoundException, IOException, ParseException {
 
 		new SpringApplicationBuilder(CodebayApplication.class).headless(false).run(args);
@@ -51,7 +62,7 @@ public class CodebayApplication {
 					dataOption.searchCity();
 					break;
 				case 3:
-					dataOption.searchDate();
+					dataOption.orderByDate();
 					break;
 				case 4:
 					dataOption.newUser();
@@ -68,9 +79,11 @@ public class CodebayApplication {
 		}
 
 	}
-/**
- * 
- */
+
+	/**
+	 * This method simulates that you clear console.
+	 */
+
 	public static void clearScreen() {
 		final int PAGE_SIZE = 50;
 		for (int i = 0; i < PAGE_SIZE; i++) {

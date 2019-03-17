@@ -22,96 +22,135 @@ import com.google.gson.Gson;
 
 import com.exercise.model.User;
 
+/**
+ * This class contains the methods to load and process the data, according to
+ * the user's requests
+ * 
+ * @author VIPR
+ *
+ */
+
 public class LoadProcessData {
+	public static final String ANSI_RESET = "\u001B[0m";
+	public static final String ANSI_GREEN = "\u001B[32m";
+	public static final String ANSI_RED = "\u001B[31m";
+
 	/**
+	 * This method loads jsonArray data from the txt file and passes it to a list of
+	 * java objects
 	 * 
 	 * @return
 	 * @throws FileNotFoundException
 	 * @throws IOException
 	 * @throws ParseException
 	 */
+
 	public List<User> loadData() throws FileNotFoundException, IOException, ParseException {
-		List<User> users = new ArrayList<User>();
-		JSONParser parser = new JSONParser();
-		Object obj = parser.parse(new FileReader("src/main/resources/db.txt"));
-		JSONArray jsonArray = (JSONArray) obj;
-		
-		for (int i = 0; i < jsonArray.size(); i++) {
-			JSONObject jsonUser = (JSONObject) jsonArray.get(i);
-			User user = new Gson().fromJson(jsonUser.toString(), User.class);
-			users.add(user);
-		}
+		try {
+			List<User> users = new ArrayList<User>();
+			JSONParser parser = new JSONParser();
+			Object obj = parser.parse(new FileReader("src/main/resources/db.txt"));
+			JSONArray jsonArray = (JSONArray) obj;
 
-		return users;
-	}
-
-	/**
-	 * 
-	 * @throws FileNotFoundException
-	 * @throws IOException
-	 * @throws ParseException
-	 */
-	public void searchActive() throws FileNotFoundException, IOException, ParseException {
-		List<User> users = loadData();
-		List<User> usersActive = new ArrayList<User>();
-		if (users != null) {
-			for (int i = 0; i < users.size(); i++) {
-				if (users.get(i).isActive() == true) {
-					usersActive.add(users.get(i));
-				}
+			for (int i = 0; i < jsonArray.size(); i++) {
+				JSONObject jsonUser = (JSONObject) jsonArray.get(i);
+				User user = new Gson().fromJson(jsonUser.toString(), User.class);
+				users.add(user);
 			}
-			if (usersActive.equals(null))
-				System.out.println("No Found Users Active");
-			else
-				printUsers(usersActive);
-		} else
-			System.out.println("Not Users in the DataBase");
-		pressAnyKeyToContinue();
+
+			return users;
+		} catch (Exception e) {
+			System.out.print(ANSI_RED + "**** Error Loading data ***** \n\n" + ANSI_RESET);
+			pressAnyKeyToContinue();
+			return null;
+		}
 	}
 
 	/**
+	 * This method searches the active users among all the users that we have in the
+	 * list of users.
 	 * 
 	 * @throws FileNotFoundException
 	 * @throws IOException
 	 * @throws ParseException
 	 */
-	public void searchCity() throws FileNotFoundException, IOException, ParseException {
-		List<User> users = loadData();
-		List<String> searchedCities = new ArrayList<String>();
-		@SuppressWarnings("resource")
-		Scanner reader = new Scanner(System.in);
-		System.out.print("Search City By: ");
-		String select = reader.next();
-		if (select != "") {
+
+	public void searchActive() throws FileNotFoundException, IOException, ParseException {
+		try {
+			List<User> users = loadData();
+			List<User> usersActive = new ArrayList<User>();
 			if (users != null) {
 				for (int i = 0; i < users.size(); i++) {
-					if (users.get(i).getCity().startsWith(select)
-							&& (!searchedCities.contains(users.get(i).getCity()))) {
-
-						searchedCities.add(users.get(i).getCity());
-
+					if (users.get(i).isActive() == true) {
+						usersActive.add(users.get(i));
 					}
-
 				}
-				if (searchedCities.equals(null))
-					System.out.println("No Found Cities");
+				if (usersActive.isEmpty())
+					System.out.println(ANSI_RED + "No Found Users Active" + ANSI_RESET);
 				else
-					printCities(searchedCities);
+					printUsers(usersActive);
 			} else
-				System.out.println("No Cities in the DataBase");
-		} else
-			System.out.println("Can´t do the search ");
-		pressAnyKeyToContinue();
-
+				System.out.println(ANSI_RED + "Not Users in the DataBase" + ANSI_RESET);
+			pressAnyKeyToContinue();
+		} catch (Exception e) {
+			System.out.print(ANSI_RED + "**** Error Searching Users ***** \n\n" + ANSI_RESET);
+			pressAnyKeyToContinue();
+		}
 	}
 
 	/**
+	 * This method asks the user for the characters they want to search the cities
+	 * for and searches for the cities that begin with that chain (Distinguish
+	 * between uppercase and lowercase).
 	 * 
 	 * @throws FileNotFoundException
 	 * @throws IOException
 	 * @throws ParseException
 	 */
-	public void searchDate() throws FileNotFoundException, IOException, ParseException {
+
+	public void searchCity() throws FileNotFoundException, IOException, ParseException {
+		try {
+			List<User> users = loadData();
+			List<String> searchedCities = new ArrayList<String>();
+			@SuppressWarnings("resource")
+			Scanner reader = new Scanner(System.in);
+			System.out.print("Search City By: ");
+			String select = reader.nextLine();
+			if (select != "") {
+				if (users != null) {
+					for (int i = 0; i < users.size(); i++) {
+						if (users.get(i).getCity().startsWith(select)
+								&& (!searchedCities.contains(users.get(i).getCity()))) {
+
+							searchedCities.add(users.get(i).getCity());
+						}
+					}
+					if (searchedCities.isEmpty())
+						System.out.println(ANSI_RED + "No Found Cities" + ANSI_RESET);
+					else
+						printCities(searchedCities);
+				} else
+					System.out.println(ANSI_RED + "No Cities in the DataBase" + ANSI_RESET);
+			} else
+				System.out.println(ANSI_RED + "Can´t do the search " + ANSI_RESET);
+			pressAnyKeyToContinue();
+		} catch (Exception e) {
+			System.out.print(ANSI_RED + "**** Error Searching City ***** \n\n" + ANSI_RESET);
+			pressAnyKeyToContinue();
+		}
+
+	}
+
+	/**
+	 * This method asks the user if he wants to order by ascending or descending
+	 * creation date and orders the list of users according to the request.
+	 * 
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 * @throws ParseException
+	 */
+
+	public void orderByDate() throws FileNotFoundException, IOException, ParseException {
 
 		try {
 			List<User> users = loadData();
@@ -133,28 +172,23 @@ public class LoadProcessData {
 					Collections.reverse(users);
 					break;
 				}
-				// if (select.equals("1"))
-				// Collections.sort(users);
-				// if (select.equals("2")) {
-				// Collections.sort(users);
-				// Collections.reverse(users);
-				// }
-				if (selectOption==1 || selectOption==2)
+				if (selectOption == 1 || selectOption == 2)
 					printUsers(users);
 				else
-					System.out.println("Introduced Incorrect Option");
+					System.out.println(ANSI_RED + "Introduced Incorrect Option" + ANSI_RESET);
 
 			} else
-				System.out.println("Not Users in the DataBase");
+				System.out.println(ANSI_RED + "Not Users in the DataBase" + ANSI_RESET);
 
 			pressAnyKeyToContinue();
 		} catch (Exception e) {
-			System.out.print("**** Error Introducing data ***** \n\n");
+			System.out.print(ANSI_RED + "**** Error Introducing data ***** \n\n" + ANSI_RESET);
 			pressAnyKeyToContinue();
 		}
 	}
 
 	/**
+	 * This method asks the user for the data of the new user he wants to create.
 	 * 
 	 * @throws FileNotFoundException
 	 * @throws IOException
@@ -190,13 +224,14 @@ public class LoadProcessData {
 			saveFile(users);
 
 		} catch (Exception e) {
-			System.out.print("**** Error Introducing data ***** \n\n");
+			System.out.print(ANSI_RED + "**** Error Introducing data ***** \n\n" + ANSI_RESET);
 			pressAnyKeyToContinue();
 		}
 
 	}
 
 	/**
+	 * This method stores the list of users in the txt file in jsonArray format.
 	 * 
 	 * @param users
 	 */
@@ -221,17 +256,18 @@ public class LoadProcessData {
 
 			JSONArray.writeJSONString(usersJson, file);
 			file.close();
-			System.out.println("New User Created");
+			System.out.println(ANSI_GREEN + "New User Created" + ANSI_RESET);
 			pressAnyKeyToContinue();
 
 		} catch (Exception e) {
-			System.out.print("**** Error Saving data ***** \n\n");
+			System.out.print(ANSI_RED + "**** Error Saving data ***** \n\n" + ANSI_RESET);
 			pressAnyKeyToContinue();
 
 		}
 	}
 
 	/**
+	 * This method prints the list of users in the console.
 	 * 
 	 * @param users
 	 */
@@ -239,17 +275,18 @@ public class LoadProcessData {
 		for (int i = 0; i < users.size(); i++) {
 
 			System.out.println("*************************** USER **********************************\n");
-			System.out.println("	Name : " + users.get(i).getName());
-			System.out.println("	SurName : " + users.get(i).getSurname());
-			System.out.println("	City : " + users.get(i).getCity());
-			System.out.println("	Email : " + users.get(i).getEmail());
-			System.out.println("	Creation Date : " + users.get(i).getCreationDate());
+			System.out.println(ANSI_GREEN + "	Name : " + users.get(i).getName() + ANSI_RESET);
+			System.out.println(ANSI_GREEN + "	SurName : " + users.get(i).getSurname() + ANSI_RESET);
+			System.out.println(ANSI_GREEN + "	City : " + users.get(i).getCity() + ANSI_RESET);
+			System.out.println(ANSI_GREEN + "	Email : " + users.get(i).getEmail() + ANSI_RESET);
+			System.out.println(ANSI_GREEN + "	Creation Date : " + users.get(i).getCreationDate() + ANSI_RESET);
 			System.out.println("************************************************************************\n\n");
 
 		}
 	}
 
 	/**
+	 * This method prints the list of cities in the console.
 	 * 
 	 * @param searchedCities
 	 */
@@ -257,13 +294,12 @@ public class LoadProcessData {
 
 		for (int i = 0; i < searchedCities.size(); i++) {
 			System.out.println("*************************** City **********************************\n");
-			System.out.println("	City : " + searchedCities.get(i));
-			System.out.println("************************************************************************\n\n");
+			System.out.println("	City : " + ANSI_GREEN + searchedCities.get(i) + ANSI_RESET);
 		}
 	}
 
 	/**
-	 * 
+	 * This method stops the execution until the user press enter.
 	 */
 	private void pressAnyKeyToContinue() {
 		System.out.println("Press Enter key to continue...");
