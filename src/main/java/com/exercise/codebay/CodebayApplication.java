@@ -14,10 +14,12 @@ import com.exercise.helpers.*;
 public class CodebayApplication {
 
 	public static void main(String[] args) throws FileNotFoundException, IOException, ParseException {
+		
 		new SpringApplicationBuilder(CodebayApplication.class).headless(false).run(args);
 		boolean init = true;
 
 		while (init) {
+			clearScreen();
 			@SuppressWarnings("resource")
 			Scanner reader = new Scanner(System.in);
 			LoadProcessData dataOption = new LoadProcessData();
@@ -36,11 +38,19 @@ public class CodebayApplication {
 				dataOption.searchDate();
 
 			}
+			if (select.equals("4")) {
+				dataOption.newUser();;
+
+			}
 			if (select.equals("5")) {
 				init = false;
 
 			}
 		}
 	}
+	public static void clearScreen() {  
+	    System.out.print("\033[H\033[2J");  
+	    System.out.flush();  
+	   }
 
 }
