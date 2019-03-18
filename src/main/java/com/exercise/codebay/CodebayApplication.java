@@ -2,6 +2,7 @@ package com.exercise.codebay;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.List;
 import java.util.Scanner;
 
 import org.apache.logging.log4j.LogManager;
@@ -11,6 +12,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 
 import com.exercise.helpers.*;
+import com.exercise.model.User;
 
 /**
  * In this class is the main method that contains the start menu for the user
@@ -36,7 +38,8 @@ public class CodebayApplication {
 		new SpringApplicationBuilder(CodebayApplication.class).headless(false).run(args);
 
 		boolean start = true;
-
+		LoadProcessData dataOption = new LoadProcessData();
+		List<User> users = dataOption.loadData();
 		while (start) {
 			try {
 				clearScreen();
@@ -52,20 +55,21 @@ public class CodebayApplication {
 				System.out.print("     Your Option :       \n");
 				String select = reader.next();
 				int selectOption = Integer.parseInt(select);
-				LoadProcessData dataOption = new LoadProcessData();
+				//LoadProcessData dataOption = new LoadProcessData();
 				switch (selectOption) {
 
 				case 1:
-					dataOption.searchActive();
+					dataOption.searchActive(users);
 					break;
 				case 2:
-					dataOption.searchCity();
+					dataOption.searchCity(users);
 					break;
 				case 3:
-					dataOption.orderByDate();
+					dataOption.orderByDate(users);
 					break;
 				case 4:
 					dataOption.newUser();
+					users=dataOption.loadData();
 					break;
 				case 5:
 					start = false;

@@ -62,6 +62,7 @@ public class LoadProcessData {
 		} catch (Exception e) {
 			System.out.print(ANSI_RED + "**** Error Loading data ***** \n\n" + ANSI_RESET);
 			pressAnyKeyToContinue();
+			System.console();
 			return null;
 		}
 	}
@@ -75,9 +76,9 @@ public class LoadProcessData {
 	 * @throws ParseException
 	 */
 
-	public void searchActive() throws FileNotFoundException, IOException, ParseException {
+	public void searchActive(List<User> users) throws FileNotFoundException, IOException, ParseException {
 		try {
-			List<User> users = loadData();
+			//List<User> users = loadData();
 			List<User> usersActive = new ArrayList<User>();
 			if (!users.isEmpty()) {
 				for (int i = 0; i < users.size(); i++) {
@@ -108,9 +109,9 @@ public class LoadProcessData {
 	 * @throws ParseException
 	 */
 
-	public void searchCity() throws FileNotFoundException, IOException, ParseException {
+	public void searchCity(List<User> users) throws FileNotFoundException, IOException, ParseException {
 		try {
-			List<User> users = loadData();
+			//List<User> users = loadData();
 			List<String> searchedCities = new ArrayList<String>();
 			@SuppressWarnings("resource")
 			Scanner reader = new Scanner(System.in);
@@ -148,10 +149,10 @@ public class LoadProcessData {
 	 * @throws ParseException
 	 */
 
-	public void orderByDate() throws FileNotFoundException, IOException, ParseException {
+	public void orderByDate(List<User> users) throws FileNotFoundException, IOException, ParseException {
 
 		try {
-			List<User> users = loadData();
+			//List<User> users = loadData();
 			@SuppressWarnings("resource")
 			Scanner reader = new Scanner(System.in);
 			System.out.print("**** Select Option ***** \n\n");
